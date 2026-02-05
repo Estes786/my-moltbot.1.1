@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "openclaw-mobile",
+  "main": "src/index.tsx",
+  "compatibility_date": "2024-01-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "pages_build_output_dir": "./dist",
+  
+  // Environment variables for production
+  // Set via: wrangler secret put SECRET_NAME
+  "vars": {
+    "ENVIRONMENT": "production"
+  }
+  
+  // Note: Secrets (HF_TOKEN, TELEGRAM_BOT_TOKEN) harus di-set via:
+  // npx wrangler pages secret put HF_TOKEN --project-name openclaw-mobile
+  // npx wrangler pages secret put TELEGRAM_BOT_TOKEN --project-name openclaw-mobile
+}

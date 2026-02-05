@@ -1,0 +1,27 @@
+// PM2 Ecosystem Configuration for OpenClaw Mobile
+// CommonJS format for PM2 compatibility
+
+module.exports = {
+  apps: [
+    {
+      name: 'openclaw-mobile',
+      script: 'npx',
+      args: 'wrangler pages dev dist --ip 0.0.0.0 --port 3000',
+      cwd: '/home/user/webapp',
+      instances: 1,
+      exec_mode: 'fork',
+      watch: false,
+      env: {
+        NODE_ENV: 'development',
+        PORT: 3000
+      },
+      error_file: './logs/error.log',
+      out_file: './logs/out.log',
+      log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
+      merge_logs: true,
+      autorestart: true,
+      max_restarts: 10,
+      min_uptime: '10s'
+    }
+  ]
+}
