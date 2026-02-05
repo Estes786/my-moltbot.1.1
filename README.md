@@ -1,3 +1,14 @@
+---
+title: OpenClaw Mobile
+emoji: 🦞
+colorFrom: purple
+colorTo: blue
+sdk: docker
+pinned: false
+license: mit
+app_port: 7860
+---
+
 # 🦞 OpenClaw Mobile - Ultimate Free AI Assistant
 
 > **100% GRATIS** • **Phone Optimized** • **Autonomous Agent** • **No Credit Card Required**
