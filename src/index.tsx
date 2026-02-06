@@ -30,7 +30,7 @@ app.get('/api/health', (c) => {
     telegram: !!c.env?.TELEGRAM_BOT_TOKEN,
     version: '2.0.0-ultimate',
     features: [
-      'Free LLM (Mistral/Gemini via HuggingFace)',
+      'Free LLM (GPT-2 Large via HuggingFace)',
       'Telegram Bot Integration',
       'Autonomous Programmer Mode',
       'Code Execution Sandbox',
@@ -100,8 +100,9 @@ Be concise, accurate, and friendly in your responses.`
       : `User: ${message}\n\nAssistant:`
     
     // Call HuggingFace Inference API
-    // Using Mistral 7B Instruct - Free and powerful model
-    const model = 'mistralai/Mistral-7B-Instruct-v0.2'
+    // Using GPT-2 Large - Free and always available
+    // Simple but reliable model for basic text generation
+    const model = 'openai-community/gpt2-large'
     
     let response = ''
     
@@ -210,7 +211,7 @@ app.post('/api/telegram/webhook', async (c) => {
       const fullPrompt = `${systemPrompt}\n\nUser ${username}: ${cleanText}\n\nAssistant:`
       
       let response = ''
-      const model = 'mistralai/Mistral-7B-Instruct-v0.2'
+      const model = 'openai-community/gpt2-large'
       
       // Get LLM response
       const result = await hf.textGeneration({
@@ -265,7 +266,7 @@ app.get('/api/test-llm', async (c) => {
   try {
     const hf = new HfInference(hfToken)
     const result = await hf.textGeneration({
-      model: 'mistralai/Mistral-7B-Instruct-v0.2',
+      model: 'openai-community/gpt2-large',
       inputs: 'Hello! Introduce yourself in one sentence.',
       parameters: {
         max_new_tokens: 100,
@@ -276,7 +277,7 @@ app.get('/api/test-llm', async (c) => {
     
     return c.json({
       status: 'success',
-      model: 'mistralai/Mistral-7B-Instruct-v0.2',
+      model: 'openai-community/gpt2-large',
       response: result.generated_text.trim(),
       timestamp: new Date().toISOString()
     })

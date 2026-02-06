@@ -18,7 +18,7 @@ OpenClaw Mobile adalah AI Assistant yang powerful, dirancang khusus untuk akses 
 ## ✨ Features
 
 ### 🤖 Core Capabilities
-- **Free LLM** - Menggunakan Mistral 7B Instruct via HuggingFace Inference API (100% gratis)
+- **Free LLM** - Menggunakan Google Gemma 2B IT via HuggingFace Inference API (100% gratis, fast & reliable)
 - **Telegram Bot** - Akses dari HP via Telegram, bot jalan 24/7 di cloud
 - **Autonomous Agent** - Bukan sekadar chatbot, bisa execute tasks kompleks
 - **Multi-Mode Chat** - Assistant mode & Programmer mode
@@ -239,16 +239,16 @@ const assistantPrompt = `You are a helpful assistant...`
 ```
 
 ### Add More Models
-Bot menggunakan Mistral 7B by default. Untuk ganti model:
+Bot menggunakan Google Gemma 2B by default (free, fast, reliable). Untuk ganti model:
 
 ```typescript
-// Di src/index.tsx, line ~75
-const model = 'mistralai/Mistral-7B-Instruct-v0.2'
+// Di src/index.tsx, line ~106
+const model = 'google/gemma-2b-it'
 
 // Alternatif models (free via HuggingFace):
-// - 'meta-llama/Llama-3.1-8B-Instruct'
-// - 'google/gemma-2-9b-it'
-// - 'Qwen/Qwen2.5-7B-Instruct'
+// - 'HuggingFaceH4/zephyr-7b-beta' (better quality, slower)
+// - 'microsoft/phi-2' (fast and efficient)
+// - 'meta-llama/Llama-3.2-3B-Instruct' (good balance)
 ```
 
 ### Enable Code Execution Sandbox
@@ -263,6 +263,8 @@ const model = 'mistralai/Mistral-7B-Instruct-v0.2'
 
 ### LLM Error: "Model loading"
 HuggingFace models butuh "cold start" ~10-30 detik pertama kali dipanggil. Try lagi setelah beberapa detik.
+
+Jika model tidak bisa di-load sama sekali, coba ganti ke model alternatif yang lebih stabil seperti `google/gemma-2b-it` atau `microsoft/phi-2`.
 
 ### LLM Error: "Rate limited"
 Free tier HuggingFace punya rate limits. Tunggu beberapa menit atau upgrade ke Pro ($9/month).
